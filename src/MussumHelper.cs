@@ -170,13 +170,27 @@ namespace MussumIpsum
             return GetRandomFromList<string>(wordArray);
         }
 
-        private static string GetRandomWords(int count)
+        public static string GetRandomWords(int count)
         {
             var result = new StringBuilder();
 
             for (var i = 0; i < count; i++)
             {
                 result.Append(" " + GetRandomWord(WordSize.Any));
+            }
+
+            return result.ToString();
+        }
+
+        public static string GetRandomFragment()
+        {
+            var result = new StringBuilder();
+
+            var pattern = GetRandomFromList(FragmentPatterns);
+
+            foreach (var wordSize in pattern)
+            {
+                result.Append(" " + GetRandomWord(wordSize));
             }
 
             return result.ToString();
