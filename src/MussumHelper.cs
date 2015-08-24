@@ -212,8 +212,7 @@ namespace MussumIpsum
             return result.ToString();
         }
 
-        // public methods
-        public static string GetRandomSentence(WordSize size)
+        private static string GetRandomSentence(WordSize size)
         {
             var result = new StringBuilder();
 
@@ -245,6 +244,21 @@ namespace MussumIpsum
             }
 
             return result.ToString();
+        }
+
+        public static string GetRandomSentences(WordSize size, int count)
+        {
+            var result = new StringBuilder();
+
+            for (var i = 0; i < count; i++)
+            {
+                var sentence = GetRandomSentence(size);
+                sentence = sentence.First().ToString().ToUpper() + sentence.Substring(1) + ". ";
+                result.Append(sentence.Trim());
+                result.Append("\n\n");
+            }
+
+            return result.ToString().Trim();
         }
     }
 }
