@@ -186,8 +186,21 @@ namespace MussumIpsum
             return result.ToString();
         }
 
-        // public methods
-        public static string GetRandomWords(int count)
+        private static string GetRandomFragment()
+        {
+            var result = new StringBuilder();
+
+            var pattern = GetRandomFromList(FragmentPatterns);
+
+            foreach (var wordSize in pattern)
+            {
+                result.Append(" " + GetRandomWord(wordSize));
+            }
+
+            return result.ToString();
+        }
+
+        private static string GetRandomWords(int count)
         {
             var result = new StringBuilder();
 
@@ -199,15 +212,36 @@ namespace MussumIpsum
             return result.ToString();
         }
 
-        public static string GetRandomFragment()
+        // public methods
+        public static string GetRandomSentence(WordSize size)
         {
             var result = new StringBuilder();
 
-            var pattern = GetRandomFromList(FragmentPatterns);
-
-            foreach (var wordSize in pattern)
+            switch (size)
             {
-                result.Append(" " + GetRandomWord(wordSize));
+                case WordSize.Any:
+                    var values = System.Enum.GetValues(typeof(WordSize)).Cast<WordSize>().ToArray();
+                    var randomSize = GetRandomFromList<WordSize>(values);
+                    result.Append(GetRandomSentence(randomSize));
+                    break;
+                case WordSize.Short:
+                    result.Append(GetRandomFragment());
+                    break;
+                case WordSize.Medium:
+                    result.Append(GetRandomSentence(WordSize.Short));
+                    result.Append(GetSentenceConnector());
+                    result.Append(GetRandomSentence(WordSize.Short));
+                    break;
+                case WordSize.Long:
+                    result.Append(GetRandomSentence(WordSize.Medium));
+                    result.Append(GetSentenceConnector());
+                    result.Append(GetRandomSentence(WordSize.Medium));
+                    break;
+                case WordSize.VeryLong:
+                    result.Append(GetRandomSentence(WordSize.Long));
+                    result.Append(GetSentenceConnector());
+                    result.Append(GetRandomSentence(WordSize.Long));
+                    break;
             }
 
             return result.ToString();
