@@ -10,9 +10,8 @@ namespace MussumIpsum
         private static Random _random = new Random();
         
         // defaults
-        private const UnitType DefaultType = UnitType.Paragraph;
-        private const WordSize DefaultSize = WordSize.Medium;
-        private const int UnitCount = 1;
+        private const UnitType DEFAULT_TYPE = UnitType.Paragraph;
+        private const WordSize DEFAULT_SIZE = WordSize.Medium;
 
         // words
         private static string[] ShortWords
@@ -136,7 +135,6 @@ namespace MussumIpsum
             }
         }
 
-        // 
         private static T GetRandomFromList<T>(T[] list)
         {
             return list[_random.Next(0, list.Length)];
@@ -170,6 +168,25 @@ namespace MussumIpsum
             return GetRandomFromList<string>(wordArray);
         }
 
+        private static string GetSentenceConnector()
+        {
+            var result = new StringBuilder();
+
+            if (_random.Next(0, 1) == 0)
+            {
+                result.Append(", ");
+            }
+            else
+            {
+                result.Append(" ");
+                result.Append(GetRandomWord(WordSize.Short));
+                result.Append(" ");
+            }
+
+            return result.ToString();
+        }
+
+        // public methods
         public static string GetRandomWords(int count)
         {
             var result = new StringBuilder();
