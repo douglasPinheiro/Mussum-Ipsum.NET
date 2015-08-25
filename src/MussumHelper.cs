@@ -13,7 +13,7 @@ namespace MussumIpsum
         private const UnitType DEFAULT_TYPE = UnitType.Paragraph;
         private const WordSize DEFAULT_SIZE = WordSize.Medium;
 
-        // words
+        // words and pattern
         private static string[] ShortWords
         {
             get
@@ -89,7 +89,6 @@ namespace MussumIpsum
             }
         }
 
-        // pattern
         private static WordSize[][] FragmentPatterns
         {
             get
@@ -135,11 +134,13 @@ namespace MussumIpsum
             }
         }
 
+        // auxiliary
         private static T GetRandomFromList<T>(T[] list)
         {
             return list[_random.Next(0, list.Length)];
         }
 
+        // mussum helpers
         private static string GetRandomWord(WordSize size)
         {
             string[] wordArray = null;
@@ -246,7 +247,7 @@ namespace MussumIpsum
             return result.ToString();
         }
 
-        public static string GetRandomSentences(WordSize size, int count)
+        private static string GetRandomSentences(WordSize size, int count)
         {
             var result = new StringBuilder();
 
@@ -259,6 +260,55 @@ namespace MussumIpsum
             }
 
             return result.ToString().Trim();
+        }
+
+        // public
+        public static string GetRandomParagraph(WordSize size)
+        {
+            var result = new StringBuilder();
+
+            switch (size)
+            {
+                case WordSize.Any:
+                    var sentenceCount = _random.Next(3, 4);
+                    for (var i = 0; i < sentenceCount; i++)
+                    {
+                        var sentence = GetRandomSentence(WordSize.Any);
+                        sentence = sentence.First().ToString().ToUpper() + sentence.Substring(1) + ". ";
+                        result.Append(sentence);
+                    }
+                    break;
+                case WordSize.Short:
+                    result.Append(GetRandomParagraph(WordSize.Short));
+                    result.Append(GetRandomParagraph(WordSize.Short));
+                    break;
+                case WordSize.Medium:
+                    result.Append(GetRandomParagraph(WordSize.Medium));
+                    result.Append(GetRandomParagraph(WordSize.Medium));
+                    break;
+                case WordSize.Long:
+                    result.Append(GetRandomParagraph(WordSize.Long));
+                    result.Append(GetRandomParagraph(WordSize.Long));
+                    break;
+            }
+
+            return result.ToString();
+        }
+
+        public static string GetRandomParagraphs(WordSize size, int count)
+        {
+            var result = "";
+
+            for (var i = 0; i < count; i++)
+            {
+                var paragraph = GetRandomParagraph(size);
+                result += paragraph.Trim();
+                result += "\n\n";
+            }
+
+            result = result.Trim();
+
+            return result;
         }
     }
 }
