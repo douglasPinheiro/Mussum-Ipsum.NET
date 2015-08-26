@@ -215,24 +215,23 @@ namespace MussumIpsum
 
         private static string GetRandomSentence(WordSize size)
         {
-            var result = new StringBuilder();
-
             if (size == WordSize.Any)
             {
                 var values = System.Enum.GetValues(typeof(WordSize)).Cast<WordSize>().ToArray();
                 var randomSize = GetRandomFromList<WordSize>(values);
-                result.Append(GetRandomSentence(randomSize));
+                return GetRandomSentence(randomSize);
             }
-            else if (size == WordSize.Short)
+
+            if (size == WordSize.Short)
             {
-                result.Append(GetRandomFragment());
+                return GetRandomFragment();
             }
-            else
-            {
-                result.Append(GetRandomSentence(size));
-                result.Append(GetSentenceConnector());
-                result.Append(GetRandomSentence(size));
-            }
+
+            var result = new StringBuilder();
+
+            result.Append(GetRandomSentence(size));
+            result.Append(GetSentenceConnector());
+            result.Append(GetRandomSentence(size));
 
             return result.ToString();
         }
