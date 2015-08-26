@@ -217,31 +217,21 @@ namespace MussumIpsum
         {
             var result = new StringBuilder();
 
-            switch (size)
+            if (size == WordSize.Any)
             {
-                case WordSize.Any:
-                    var values = System.Enum.GetValues(typeof(WordSize)).Cast<WordSize>().ToArray();
-                    var randomSize = GetRandomFromList<WordSize>(values);
-                    result.Append(GetRandomSentence(randomSize));
-                    break;
-                case WordSize.Short:
-                    result.Append(GetRandomFragment());
-                    break;
-                case WordSize.Medium:
-                    result.Append(GetRandomSentence(WordSize.Short));
-                    result.Append(GetSentenceConnector());
-                    result.Append(GetRandomSentence(WordSize.Short));
-                    break;
-                case WordSize.Long:
-                    result.Append(GetRandomSentence(WordSize.Medium));
-                    result.Append(GetSentenceConnector());
-                    result.Append(GetRandomSentence(WordSize.Medium));
-                    break;
-                case WordSize.VeryLong:
-                    result.Append(GetRandomSentence(WordSize.Long));
-                    result.Append(GetSentenceConnector());
-                    result.Append(GetRandomSentence(WordSize.Long));
-                    break;
+                var values = System.Enum.GetValues(typeof(WordSize)).Cast<WordSize>().ToArray();
+                var randomSize = GetRandomFromList<WordSize>(values);
+                result.Append(GetRandomSentence(randomSize));
+            }
+            else if (size == WordSize.Short)
+            {
+                result.Append(GetRandomFragment());
+            }
+            else
+            {
+                result.Append(GetRandomSentence(size));
+                result.Append(GetSentenceConnector());
+                result.Append(GetRandomSentence(size));
             }
 
             return result.ToString();
