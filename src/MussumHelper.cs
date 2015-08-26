@@ -222,18 +222,12 @@ namespace MussumIpsum
                 return GetRandomSentence(randomSize);
             }
 
-            if (size == WordSize.Short)
-            {
-                return GetRandomFragment();
-            }
+            if (size == WordSize.Short) return GetRandomFragment();
 
-            var result = new StringBuilder();
-
-            result.Append(GetRandomSentence(size));
-            result.Append(GetSentenceConnector());
-            result.Append(GetRandomSentence(size));
-
-            return result.ToString();
+            return string.Concat(
+                GetRandomSentence(size), 
+                GetSentenceConnector(), 
+                GetRandomSentence(size));
         }
 
         private static string GetRandomSentences(WordSize size, int count)
@@ -243,7 +237,7 @@ namespace MussumIpsum
             for (var i = 0; i < count; i++)
             {
                 var sentence = GetRandomSentence(size);
-                sentence = sentence.First().ToString().ToUpper() + sentence.Substring(1) + ". ";
+                sentence = string.Concat(sentence.First().ToString().ToUpper(), sentence.Substring(1), ". ");
                 result.Append(sentence.Trim());
                 result.Append("\n\n");
             }
@@ -251,53 +245,33 @@ namespace MussumIpsum
             return result.ToString().Trim();
         }
 
-        // public
-        public static string GetRandomParagraph(WordSize size)
+        private static string GetRandomParagraph(WordSize size)
         {
-            var result = new StringBuilder();
-
-            switch (size)
+            if (size == WordSize.Any)
             {
-                case WordSize.Any:
-                    var sentenceCount = _random.Next(3, 4);
-                    for (var i = 0; i < sentenceCount; i++)
-                    {
-                        var sentence = GetRandomSentence(WordSize.Any);
-                        sentence = sentence.First().ToString().ToUpper() + sentence.Substring(1) + ". ";
-                        result.Append(sentence);
-                    }
-                    break;
-                case WordSize.Short:
-                    result.Append(GetRandomParagraph(WordSize.Short));
-                    result.Append(GetRandomParagraph(WordSize.Short));
-                    break;
-                case WordSize.Medium:
-                    result.Append(GetRandomParagraph(WordSize.Medium));
-                    result.Append(GetRandomParagraph(WordSize.Medium));
-                    break;
-                case WordSize.Long:
-                    result.Append(GetRandomParagraph(WordSize.Long));
-                    result.Append(GetRandomParagraph(WordSize.Long));
-                    break;
+                var sentenceCount = _random.Next(3, 4);
+                for (var i = 0; i < sentenceCount; i++)
+                {
+                    var sentence = GetRandomSentence(WordSize.Any);
+                    return string.Concat(sentence.First().ToString().ToUpper(), sentence.Substring(1), ". ");
+                }
             }
 
-            return result.ToString();
+            return string.Concat(GetRandomParagraph(size), GetRandomParagraph(size));
         }
 
+        // public
         public static string GetRandomParagraphs(WordSize size, int count)
         {
-            var result = "";
+            var result = new StringBuilder();
 
             for (var i = 0; i < count; i++)
             {
                 var paragraph = GetRandomParagraph(size);
-                result += paragraph.Trim();
-                result += "\n\n";
+                result.Append(paragraph.Trim() + "\n\n");
             }
 
-            result = result.Trim();
-
-            return result;
+            return result.ToString().Trim();
         }
     }
 }
