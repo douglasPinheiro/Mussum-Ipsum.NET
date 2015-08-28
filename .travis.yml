@@ -1,2 +1,2 @@
 language: csharp
-solution: MussumIpsum.sln
+solution: ./src/MussumIpsum.sln
