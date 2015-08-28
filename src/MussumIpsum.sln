@@ -12,7 +12,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".nuget", ".nuget", "{BA9937
 		.nuget\NuGet.targets = .nuget\NuGet.targets
 	EndProjectSection
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ConsoleApplication1", "..\ConsoleApplication1\ConsoleApplication1.csproj", "{AACCA9EF-DCD4-4AAC-9CF9-1BD92E206C6F}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MussumIpsum.Run", "MussumIpsum.Run\MussumIpsum.Run.csproj", "{2A241AA9-6E98-45FE-A495-B641A0497071}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -24,10 +24,10 @@ Global
 		{6C2744AA-FA78-4CA1-BE92-540FEB0CDF49}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{6C2744AA-FA78-4CA1-BE92-540FEB0CDF49}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{6C2744AA-FA78-4CA1-BE92-540FEB0CDF49}.Release|Any CPU.Build.0 = Release|Any CPU
-		{AACCA9EF-DCD4-4AAC-9CF9-1BD92E206C6F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{AACCA9EF-DCD4-4AAC-9CF9-1BD92E206C6F}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{AACCA9EF-DCD4-4AAC-9CF9-1BD92E206C6F}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{AACCA9EF-DCD4-4AAC-9CF9-1BD92E206C6F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2A241AA9-6E98-45FE-A495-B641A0497071}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2A241AA9-6E98-45FE-A495-B641A0497071}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2A241AA9-6E98-45FE-A495-B641A0497071}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2A241AA9-6E98-45FE-A495-B641A0497071}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
