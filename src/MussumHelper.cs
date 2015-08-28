@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Globalization;
 using System.Linq;
 using System.Text;
 using MussumIpsum.Enum;
@@ -169,7 +170,7 @@ namespace MussumIpsum
             return GetRandomFromList<string>(wordArray);
         }
 
-        private static string GetSentenceConnector()
+        private static string GetPreposition()
         {
             var result = new StringBuilder();
 
@@ -215,19 +216,35 @@ namespace MussumIpsum
 
         private static string GetRandomSentence(WordSize size)
         {
-            if (size == WordSize.Any)
-            {
-                var values = System.Enum.GetValues(typeof(WordSize)).Cast<WordSize>().ToArray();
-                var randomSize = GetRandomFromList<WordSize>(values);
-                return GetRandomSentence(randomSize);
-            }
-
             if (size == WordSize.Short) return GetRandomFragment();
 
+            if (size == WordSize.Any)
+            {
+                var randomSize = GetRandomEnumValue<WordSize>();
+                return GetRandomSentence(randomSize);
+            }            
+
             return string.Concat(
-                GetRandomSentence(size), 
-                GetSentenceConnector(), 
-                GetRandomSentence(size));
+                GetRandomSentence(GetLessEnumParagraph(size)), 
+                GetPreposition(), 
+                GetRandomSentence(GetLessEnumParagraph(size)));
+        }
+
+        private static WordSize GetLessEnumParagraph(WordSize size)
+        {
+            var newSize = WordSize.Short;
+
+            switch (newSize)
+            {
+                case WordSize.Long :
+                    newSize = WordSize.Medium;
+                    break;
+                case WordSize.VeryLong :
+                    newSize = WordSize.Long;
+                    break;
+            }
+
+            return newSize;
         }
 
         private static string GetRandomSentences(WordSize size, int count)
@@ -245,23 +262,48 @@ namespace MussumIpsum
             return result.ToString().Trim();
         }
 
-        private static string GetRandomParagraph(WordSize size)
-        {
-            if (size == WordSize.Any)
-            {
-                var sentenceCount = _random.Next(3, 4);
-                for (var i = 0; i < sentenceCount; i++)
-                {
-                    var sentence = GetRandomSentence(WordSize.Any);
-                    return string.Concat(sentence.First().ToString().ToUpper(), sentence.Substring(1), ". ");
-                }
-            }
+        private static string GetRandomParagraph(ParagraphSize size)
+        {          
+            switch (size)
+            {                
+                case ParagraphSize.Short:
+                    var paragraph = string.Empty;
+                    var sentenceCount = _random.Next(3, 4);
 
-            return string.Concat(GetRandomParagraph(size), GetRandomParagraph(size));
+                    for (var i = 0; i < sentenceCount; i++)
+                    {
+                        var sentence = GetRandomSentence(WordSize.Any);
+                        paragraph += string.Concat(CultureInfo.CurrentCulture.TextInfo.ToTitleCase(sentence), ". ");
+                    }
+
+                    return paragraph;
+                case ParagraphSize.Medium:
+                    return string.Concat(
+                        GetRandomParagraph(ParagraphSize.Short),
+                        GetRandomParagraph(ParagraphSize.Short));
+                case ParagraphSize.Long:
+                    return string.Concat(
+                       GetRandomParagraph(ParagraphSize.Medium),
+                       GetRandomParagraph(ParagraphSize.Medium));
+                case ParagraphSize.VeryLong:
+                    return string.Concat(
+                       GetRandomParagraph(ParagraphSize.Long),
+                       GetRandomParagraph(ParagraphSize.Long));
+                case ParagraphSize.Any:
+                default :
+                    var randomSize = GetRandomEnumValue<ParagraphSize>();
+                    return GetRandomParagraph(randomSize);
+            }
+        }
+
+        private static T GetRandomEnumValue<T>()
+        {
+            var values = System.Enum.GetValues(typeof(T)).Cast<T>().ToArray();
+            return GetRandomFromList<T>(values);
         }
 
         // public
-        public static string GetRandomParagraphs(WordSize size, int count)
+        public static string GetRandomParagraphs(ParagraphSize size, int count)
         {
             var result = new StringBuilder();
 
