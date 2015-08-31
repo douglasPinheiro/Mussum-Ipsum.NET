@@ -7,7 +7,7 @@ namespace MussumIpsum.Run
     {
         static void Main(string[] args)
         {
-            var paragraph = MussumHelper.GetRandomParagraphs(ParagraphSize.Short, 1);
+            var paragraph = MussumGenerator.GetRandomParagraphs(ParagraphSize.Short, 1);
             Console.WriteLine(paragraph);
             Console.ReadKey();
         }

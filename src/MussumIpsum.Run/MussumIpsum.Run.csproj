@@ -50,7 +50,7 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\MussumIpsum.App.csproj">
+    <ProjectReference Include="..\MussumIpsum.App\MussumIpsum.App.csproj">
       <Project>{6c2744aa-fa78-4ca1-be92-540feb0cdf49}</Project>
       <Name>MussumIpsum.App</Name>
     </ProjectReference>

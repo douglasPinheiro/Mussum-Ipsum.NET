@@ -4,11 +4,11 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{6C2744AA-FA78-4CA1-BE92-540FEB0CDF49}</ProjectGuid>
+    <ProjectGuid>{D6F6FD43-358A-41B4-A3F2-21170E9E1F05}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>MussumIpsum</RootNamespace>
-    <AssemblyName>MussumIpsum</AssemblyName>
+    <RootNamespace>MussumIpsum.Tests</RootNamespace>
+    <AssemblyName>MussumIpsum.Tests</AssemblyName>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <TargetFrameworkProfile />
@@ -41,12 +41,15 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Enum\ParagraphSize.cs" />
-    <Compile Include="Enum\WordSize.cs" />
-    <Compile Include="Enum\UnitType.cs" />
-    <Compile Include="MussumHelper.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\MussumIpsum.App\MussumIpsum.App.csproj">
+      <Project>{6c2744aa-fa78-4ca1-be92-540feb0cdf49}</Project>
+      <Name>MussumIpsum.App</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

@@ -3,8 +3,6 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 14
 VisualStudioVersion = 14.0.23107.0
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MussumIpsum.App", "MussumIpsum.App.csproj", "{6C2744AA-FA78-4CA1-BE92-540FEB0CDF49}"
-EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".nuget", ".nuget", "{BA993773-48A2-42BE-92EF-BDC29C27C336}"
 	ProjectSection(SolutionItems) = preProject
 		.nuget\NuGet.Config = .nuget\NuGet.Config
@@ -12,7 +10,11 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".nuget", ".nuget", "{BA9937
 		.nuget\NuGet.targets = .nuget\NuGet.targets
 	EndProjectSection
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MussumIpsum.Run", "MussumIpsum.Run\MussumIpsum.Run.csproj", "{2A241AA9-6E98-45FE-A495-B641A0497071}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MussumIpsum.App", "src\MussumIpsum.App\MussumIpsum.App.csproj", "{6C2744AA-FA78-4CA1-BE92-540FEB0CDF49}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MussumIpsum.Run", "src\MussumIpsum.Run\MussumIpsum.Run.csproj", "{2A241AA9-6E98-45FE-A495-B641A0497071}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MussumIpsum.Tests", "src\MussumIpsum.Tests\MussumIpsum.Tests.csproj", "{D6F6FD43-358A-41B4-A3F2-21170E9E1F05}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -28,6 +30,10 @@ Global
 		{2A241AA9-6E98-45FE-A495-B641A0497071}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{2A241AA9-6E98-45FE-A495-B641A0497071}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{2A241AA9-6E98-45FE-A495-B641A0497071}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D6F6FD43-358A-41B4-A3F2-21170E9E1F05}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D6F6FD43-358A-41B4-A3F2-21170E9E1F05}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D6F6FD43-358A-41B4-A3F2-21170E9E1F05}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D6F6FD43-358A-41B4-A3F2-21170E9E1F05}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
