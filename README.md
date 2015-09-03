@@ -1,6 +1,6 @@
 ## Mussum-Ipsum.NET
 
-[![Build Status](https://img.shields.io/travis/henriquebelfort/Mussum-Ipsum.NET.svg?style=flat-square)](https://travis-ci.org/henriquebelfort/Mussum-Ipsum.NET)
+[![Build Status](https://img.shields.io/appveyor/ci/henriquebelfort/mussum-ipsum-net.svg?style=flat-square)](https://ci.appveyor.com/project/henriquebelfort/mussum-ipsum-net/)
 
 [![GitHub license](https://img.shields.io/github/license/mashape/apistatus.svg?style=flat-square)](http://opensource.org/licenses/MIT)
 
