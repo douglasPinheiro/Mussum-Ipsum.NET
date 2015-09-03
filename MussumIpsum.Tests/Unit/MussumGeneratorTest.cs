@@ -1,26 +1,23 @@
-﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
-using MussumIpsum.App;
+﻿using MussumIpsum.App;
 using MussumIpsum.App.Enum;
 using System.Text.RegularExpressions;
+using Xunit;
 
 namespace MussumIpsum.Tests.Unit
 {
-    [TestClass]
     public class MussumGeneratorTest
     {
-        [TestMethod]
-        public void GetRandomParagraphs_TestNumberParagraphs()
+        [Theory()]
+        [InlineData(1)]
+        [InlineData(5)]
+        [InlineData(10)]
+        public void GetRandomParagraphs_TestNumberParagraphs(int number)
         {
-            var paragraphsNumber = new int[] { 1, 3, 5, 8, 10 };
+            string text = MussumGenerator.GetRandomParagraphs(ParagraphSize.Any, number);
 
-            foreach (var number in paragraphsNumber)
-	        {
-                string text = MussumGenerator.GetRandomParagraphs(ParagraphSize.Any, number);
+            int paragraphsNumberResult = Regex.Matches(text, "\n\n").Count + 1;
 
-                int paragraphsNumberResult = Regex.Matches(text, "\n\n").Count + 1;
-
-                Assert.AreEqual(paragraphsNumberResult, number);
-	        }
+            Assert.Equal(paragraphsNumberResult, number);
         }
     }
 }
