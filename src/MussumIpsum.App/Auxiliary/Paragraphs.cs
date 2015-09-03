@@ -1,5 +1,5 @@
 ﻿using System.Globalization;
-using MussumIpsum.Enum;
+using MussumIpsum.App.Enum;
 
 namespace MussumIpsum.App.Auxiliary
 {

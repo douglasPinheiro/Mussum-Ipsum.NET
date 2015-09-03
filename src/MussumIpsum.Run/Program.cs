@@ -1,5 +1,6 @@
 ﻿using System;
-using MussumIpsum.Enum;
+using MussumIpsum.App;
+using MussumIpsum.App.Enum;
 
 namespace MussumIpsum.Run
 {
