@@ -1,8 +1,8 @@
 ﻿using System.Text;
 using MussumIpsum.App.Auxiliary;
-using MussumIpsum.Enum;
+using MussumIpsum.App.Enum;
 
-namespace MussumIpsum
+namespace MussumIpsum.App
 {
     public static class MussumGenerator
     {

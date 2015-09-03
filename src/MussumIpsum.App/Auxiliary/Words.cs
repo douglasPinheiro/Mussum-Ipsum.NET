@@ -1,6 +1,6 @@
 ﻿using System.Linq;
 using System.Text;
-using MussumIpsum.Enum;
+using MussumIpsum.App.Enum;
 
 namespace MussumIpsum.App.Auxiliary
 {

@@ -1,4 +1,4 @@
-﻿namespace MussumIpsum.Enum
+﻿namespace MussumIpsum.App.Enum
 {
     public enum WordSize
     {
