@@ -53,6 +53,12 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Unit\MussumGeneratorTest.cs" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\src\MussumIpsum.App\MussumIpsum.App.csproj">
+      <Project>{6c2744aa-fa78-4ca1-be92-540feb0cdf49}</Project>
+      <Name>MussumIpsum.App</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Choose>
     <When Condition="'$(VisualStudioVersion)' == '10.0' And '$(IsCodedUITest)' == 'True'">
       <ItemGroup>
