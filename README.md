@@ -2,10 +2,16 @@
 
 [![Build Status](https://img.shields.io/appveyor/ci/henriquebelfort/mussum-ipsum-net.svg?style=flat-square)](https://ci.appveyor.com/project/henriquebelfort/mussum-ipsum-net/)
 
+[![NuGet](https://img.shields.io/nuget/v/Nuget.Core.svg?style=flat-square)](https://www.nuget.org/packages/MussumIpsum.App/1.0.0)
+
 [![GitHub license](https://img.shields.io/github/license/mashape/apistatus.svg?style=flat-square)](http://opensource.org/licenses/MIT)
 
 Gerador de Mussum Ipsum em c#
 
+```powershell
+
+Install-Package MussumIpsum.App
+```
 
 ###### Exemplo:
 
